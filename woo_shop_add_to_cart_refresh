@@ -1,3 +1,4 @@
+//Remove the redirect to the product page and refresh the shop page
 function woo_shop_add_to_cart_refresh() {
 	if (isset($_REQUEST['add-to-cart']) && is_shop()) {
 		$product_id = intval($_REQUEST['add-to-cart']);
