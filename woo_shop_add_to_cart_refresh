@@ -1,0 +1,15 @@
+function woo_shop_add_to_cart_refresh() {
+	if (isset($_REQUEST['add-to-cart']) && is_shop()) {
+		$product_id = intval($_REQUEST['add-to-cart']);
+		$product_categories = get_the_terms($product_id, 'product_cat');
+		
+		if ($product_categories) {
+			$category_url = get_term_link($product_categories[0]);
+			if (!is_wp_error($category_url)) {
+				wp_safe_redirect($category_url);
+				exit();
+			}
+		}
+	}
+}
+add_action('wp', 'woo_shop_add_to_cart_refresh');
